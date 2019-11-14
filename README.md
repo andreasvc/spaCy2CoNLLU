@@ -14,9 +14,10 @@ Parse text with Spacy and write output in CoNLL-U format:
 
 	$ spacyconllu.py [inputfile] [outputfile] [--model=<name>]
 
-By default: read stdin, write to stdout, model=en_core_web_sm
-Expects input to contain one document/paragraph/sentence per line.
-Cf. https://spacy.io/ and http://universaldependencies.org/format.html
+- By default: read stdin, write to stdout, model `en_core_web_sm`
+- Expects input to contain one document/paragraph/sentence per line;
+  the input is parsed in batches of 1024 lines at a time.
+- Cf. https://spacy.io/ and http://universaldependencies.org/format.html
 
 ## Example
 
@@ -37,4 +38,4 @@ $ echo "Why did the chicken cross the road?" | python3 spacyconllu.py
 
 ## Credits
 
-Based on code by @rgalhama
+Based on code by [@rgalhama](https://github.com/rgalhama/)
