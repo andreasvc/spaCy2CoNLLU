@@ -104,7 +104,7 @@ def main():
     try:
         with open(input_file, encoding='utf8') as inp:
             for doc in nlp.pipe(inp, batch_size=1024):
-                doc_to_conllu(doc, out, sent_id, tagmap, prefix='')
+                sent_id = doc_to_conllu(doc, out, sent_id, tagmap, prefix='')
     finally:
         if out is not None:
             out.close()
