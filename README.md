@@ -1,12 +1,23 @@
-# spaCy2CoNLLU
-Simple script to parse text with spaCy and print the output in CoNLL-U format (http://universaldependencies.org/docs/format.html).
+# spacyconllu
 
-### Requirements
+Parse text with Spacy and write output in CoNLL-U format;
+cf. http://universaldependencies.org/docs/format.html
 
+## Requirements
 
-* Python 3.4+ (tested on 3.6.6 only)
+* Python 3.4+
 * spaCy (https://spacy.io/usage/#installation)
 
+## Usage
 
-### Usage
-python parse_as_conllu.py [-h] --input_file INPUT_FILE [--output_file OUTPUT_FILE] --model MODEL
+Parse text with Spacy and write output in CoNLL-U format.
+
+Usage: spacyconllu.py [inputfile] [outputfile] [--model=<name>]
+
+By default: read stdin, write to stdout, model=en_core_web_sm
+Expects input to contain one document/paragraph/sentence per line.
+Cf. https://spacy.io/ and http://universaldependencies.org/format.html
+
+## Credits
+
+Based on code by @rgalhama
