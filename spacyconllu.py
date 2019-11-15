@@ -103,7 +103,7 @@ def main():
     out = open(args[1], 'w', encoding='utf8') if len(args) > 1 else None
     try:
         with open(input_file, encoding='utf8') as inp:
-            for doc in nlp.pipe(inp, batch_size=1024):
+            for doc in nlp.pipe(inp, batch_size=1000, disable=['ner']):
                 sent_id = doc_to_conllu(doc, out, sent_id, tagmap, prefix='')
     finally:
         if out is not None:
