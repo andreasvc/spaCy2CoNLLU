@@ -15,8 +15,9 @@ Parse text with Spacy and write output in CoNLL-U format:
 	$ spacyconllu.py [inputfile] [outputfile] [--model=<name>]
 
 - By default: read stdin, write to stdout, model `en_core_web_sm`
-- Expects input to contain one document/paragraph/sentence per line;
-  the input is parsed in batches of 1024 lines at a time.
+- Expects input to contain one document/paragraph/sentence per line of
+  *untokenized* text. No line breaks within sentences!
+  The input is parsed in batches of 1000 lines at a time.
 
 ## Example
 
