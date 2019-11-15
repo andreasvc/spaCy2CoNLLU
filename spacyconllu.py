@@ -11,6 +11,13 @@ import getopt
 import spacy
 
 
+def get_lemma(word):
+    """Fix Spacy's non-standard lemmatization of pronouns."""
+    if word.lemma_ == '-PRON-':
+        return word.text if word.text == 'I' else word.text.lower()
+    return word.lemma_
+
+
 def get_morphology(tag, tagmap):
     """Get morphological features FEATS for a given XPOS tag."""
     if tagmap and tag in tagmap:
@@ -49,8 +56,8 @@ def doc_to_conllu(doc, out, sent_id, tagmap, prefix=''):
                     str(wordidx),
                     # 2. FORM: Word form or punctuation symbol.
                     word.text or '_',
-                    # 3. LEMMA: Lemma or stem of word form.
-                    word.lemma_ or '_',
+                    # 3. LEMMA: Lemma of word form.
+                    get_lemma(word) or '_',
                     # 4. UPOSTAG: Universal part-of-speech tag drawn from
                     #    revised version of the Google universal POS tags.
                     word.pos_ or '_',
